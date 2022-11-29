@@ -17,6 +17,7 @@ use crossterm::{
 };
 use std::io::{stdout, BufRead, BufReader, Write};
 
+mod csv;
 mod plot;
 mod sinewave;
 
@@ -185,8 +186,11 @@ fn main() {
     .unwrap();
     stdout.flush().unwrap();
 
+    let now_date = chrono::Local::now().format("%Y%m%d_%H%M%S").to_string();
     // plot
-    plot::plot_audiogram(result, "./result");
+    plot::plot_audiogram(result.clone(), "./result", &now_date);
+
+    csv::save_to_csv(result, "./result", &now_date)
 }
 
 fn load_yaml_config(path: &Path) -> Point {
