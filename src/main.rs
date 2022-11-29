@@ -122,10 +122,10 @@ fn main() {
                 if let Ok(Event::Key(event)) = read() {
                     match event.code {
                         crossterm::event::KeyCode::Up => {
-                            sink.set_volume(sink.volume() * db_to_float(1.0) as f32);
+                            sink.set_volume(sink.volume() * db_to_float(2.0) as f32);
                         }
                         crossterm::event::KeyCode::Down => {
-                            sink.set_volume(sink.volume() * db_to_float(-1.0) as f32);
+                            sink.set_volume(sink.volume() * db_to_float(-2.0) as f32);
                         }
                         crossterm::event::KeyCode::Char('r') => {
                             sink.stop();
