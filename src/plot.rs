@@ -52,18 +52,18 @@ pub fn plot_audiogram(result: BTreeMap<String, BTreeMap<i32, f32>>, dir_path: &s
                 .unwrap()
                 .iter()
                 .map(|(x, y)| (*x as f32, (*y).abs() as f64)),
-            &RED,
+            &BLUE,
         ))
         .unwrap()
         .label("L")
-        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &RED));
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &BLUE));
     chart_context
         .draw_series(
             result
                 .get("L")
                 .unwrap()
                 .iter()
-                .map(|(x, y)| Circle::new((*x as f32, (*y).abs() as f64), 3, RED.filled())),
+                .map(|(x, y)| Circle::new((*x as f32, (*y).abs() as f64), 3, BLUE.filled())),
         )
         .unwrap();
 
@@ -75,18 +75,18 @@ pub fn plot_audiogram(result: BTreeMap<String, BTreeMap<i32, f32>>, dir_path: &s
                 .unwrap()
                 .iter()
                 .map(|(x, y)| (*x as f32, (*y).abs() as f64)),
-            &BLUE,
+            &RED,
         ))
         .unwrap()
         .label("R")
-        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &BLUE));
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &RED));
     chart_context
         .draw_series(
             result
                 .get("R")
                 .unwrap()
                 .iter()
-                .map(|(x, y)| Circle::new((*x as f32, (*y).abs() as f64), 3, BLUE.filled())),
+                .map(|(x, y)| Circle::new((*x as f32, (*y).abs() as f64), 3, RED.filled())),
         )
         .unwrap();
 
