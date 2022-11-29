@@ -47,7 +47,6 @@ pub fn load_csv(dir_path: &str) -> BTreeMap<String, BTreeMap<String, BTreeMap<i3
 
     let mut reader = csv::Reader::from_path(path).unwrap();
     let title_row = reader.headers().unwrap().to_owned();
-    println!("{:?}", title_row);
     for row in reader.records() {
         let row = row.unwrap();
         let date = row.get(0).unwrap().to_string();
@@ -55,7 +54,6 @@ pub fn load_csv(dir_path: &str) -> BTreeMap<String, BTreeMap<String, BTreeMap<i3
         let mut data = BTreeMap::new();
         for (i, value) in row.iter().enumerate() {
             if i > 1 {
-                println!("{}: {}", title_row.get(i).unwrap(), value);
                 let freq = title_row.get(i).unwrap().parse::<i32>().unwrap();
                 let volume = value.parse::<f32>().unwrap();
                 data.insert(freq, volume);
