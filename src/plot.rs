@@ -3,17 +3,18 @@ use std::collections::BTreeMap;
 use std::fs;
 
 // plot audiogram result
-pub fn plot_audiogram(result: BTreeMap<String, BTreeMap<i32, f32>>, dir_path: &str) {
+pub fn plot_audiogram(
+    result: BTreeMap<String, BTreeMap<i32, f32>>,
+    dir_path: &str,
+    now_date: &str,
+) {
     // if dir_path is not exist, create dir
     if !fs::metadata(dir_path).is_ok() {
         fs::create_dir(dir_path).unwrap();
     }
 
-    // get current YYYYMMDD_HHMMSS
-    let now = chrono::Local::now().format("%Y%m%d_%H%M%S").to_string();
-
     // use now as filename and png
-    let filename = format!("{}_audiogram.png", now);
+    let filename = format!("{}_audiogram.png", now_date);
     let path_str = format!("{}/{}", dir_path, filename);
     let root = BitMapBackend::new(&path_str, (960, 720)).into_drawing_area();
     root.fill(&WHITE).unwrap();
