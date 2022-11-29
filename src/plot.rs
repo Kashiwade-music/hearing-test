@@ -38,7 +38,7 @@ pub fn plot_audiogram(result: BTreeMap<String, BTreeMap<i32, f32>>, dir_path: &s
         .configure_mesh()
         .x_desc("Frequency [Hz]")
         .y_desc("Volume [dB]")
-        .axis_desc_style(("sans-serif", 10).into_font())
+        .axis_desc_style(("sans-serif", 15).into_font())
         .x_labels(10)
         .y_labels(10)
         .draw()
